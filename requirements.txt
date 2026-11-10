@@ -1,0 +1,4 @@
+# Minimal starting point. Add the LLM provider SDK once the team picks a provider.
+duckdb
+pyyaml
+python-dotenv

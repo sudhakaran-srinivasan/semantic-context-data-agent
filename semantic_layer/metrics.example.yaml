@@ -1,0 +1,31 @@
+# ILLUSTRATIVE EXAMPLE ONLY. The team will finalize names and definitions
+# once the sample database exists.
+
+tables:
+  orders:
+    status: certified          # certified | staging
+    freshness: "refreshed daily"
+  orders_staging:
+    status: staging            # must not be used for answers
+    freshness: "unvalidated"
+
+metrics:
+  net_revenue:
+    description: "Revenue from completed orders, after refunds."
+    source_table: orders
+    expression: "SUM(order_total - refund_total)"
+    required_filters:
+      - "order_status = 'completed'"   # cancelled orders must not count
+    synonyms: ["revenue", "sales"]
+    owner: finance
+
+  gross_bookings:
+    description: "Order value at the time of booking, before cancellations."
+    source_table: orders
+    expression: "SUM(order_total)"
+    required_filters: []
+    synonyms: ["revenue", "bookings"]
+    owner: sales
+
+# Deliberate conflict: "revenue" matches both net_revenue and gross_bookings.
+# Expected behavior: the assistant asks which one is meant, naming each source.

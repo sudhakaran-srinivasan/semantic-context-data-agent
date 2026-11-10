@@ -1,0 +1,4 @@
+id,question,category,expected_behavior,expected_answer,notes
+EX-1,"What was net revenue last quarter?",clean_metric,answer,"(computed from the sample data)","Uses completed orders only"
+EX-2,"What was revenue last quarter?",ambiguous_metric,clarify,"","Two definitions match; ask which one"
+EX-3,"How many orders are in the staging table?",untrusted_source,decline,"","Staging table is not certified"

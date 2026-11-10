@@ -1,0 +1,19 @@
+# Secrets: never commit API keys or credentials
+.env
+*.key
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Local databases and outputs (regenerate with the build script)
+*.duckdb
+*.duckdb.wal
+evaluation/results/
+
+# OS / editor
+.DS_Store
+.vscode/
+.idea/
